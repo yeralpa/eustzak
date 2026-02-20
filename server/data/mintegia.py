@@ -56,7 +56,7 @@ class AditzMintegia:
 
         try:
             if isNori and isNork:
-                out = denboraClass[pPertsonak[0]].at[pPertsonak[1], pPertsonak[2]]
+                out = denboraClass[pPertsonak[0]].at[pPertsonak[2], pPertsonak[1]]
             elif isNori:
                 out = denboraClass.at[pPertsonak[0], pPertsonak[1]]
             elif isNork:
