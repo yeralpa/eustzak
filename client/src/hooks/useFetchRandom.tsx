@@ -20,7 +20,7 @@ export const useFetchRandom = () => {
     return useQuery({
         queryKey: ["random"],
         queryFn: () => {
-            return axios.get<Random>('http://localhost:8000/bulkRandom')
+            return axios.get<Random>('http://127.0.0.1:8000/bulkRandom')
         },
         staleTime: 1000
     })
