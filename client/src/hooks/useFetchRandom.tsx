@@ -20,8 +20,9 @@ export const useFetchRandom = () => {
     return useQuery({
         queryKey: ["random"],
         queryFn: () => {
-            return axios.get<Random>('http://127.0.0.1:8000/bulkRandom')
+            return axios.get<Random>(`${process.env.REACT_APP_API_URL}/fullRandom`)
         },
-        staleTime: 1000
+        staleTime: Infinity, // Keep the data "fresh" so it doesn't auto-fetch
+        refetchOnWindowFocus: false
     })
 }

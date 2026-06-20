@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from data.mintegia import AditzMintegia
@@ -6,10 +7,9 @@ from data.enums import *
 app = FastAPI()
 mintegia = AditzMintegia()
 
-# Configuración necesaria para que React pueda conectar
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Limitar a el dominio
+    allow_origins=os.getenv("ALLOWED_ORIGINS", "https://emubytes.eu,http://localhost:3000").split(","),
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -42,7 +42,7 @@ async def random_aditza():
         res = mintegia.search(aditza.name, modua.name, denbora.name, nor.name, 
                                     nori.name, nork.name)
         return {"success": True, 
-                "ifinitiboa": aditza.name,
+                "infinitiboa": aditza.name,
                 "modua": modua.name,
                 "denbora": denbora.name,
                 "nor": nor.name,
@@ -53,8 +53,8 @@ async def random_aditza():
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@app.get("/bulkRandom")
-async def bulkd_random_aditza():
+@app.get("/fullRandom")
+async def full_random_aditza():
     try:
         aditza: Aditza = Aditza.random()
 

@@ -52,8 +52,6 @@ class AditzMintegia:
         except KeyError:
             raise NotFoundException("modua - denbora", f"Ez da konbinazioa topatu: {pModua} - {pDenbora}")
 
-        print(nor, nori, nork)
-
         try:
             if isNori and isNork:
                 out = denboraClass[pPertsonak[0]].at[pPertsonak[2], pPertsonak[1]]
