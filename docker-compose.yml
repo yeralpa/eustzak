@@ -1,0 +1,19 @@
+services:
+  client:
+    build: ./client
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:80"
+
+  server:
+    build: ./server
+    restart: unless-stopped
+    env_file:
+      - ./server/.env
+    ports:
+      - "127.0.0.1:8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
