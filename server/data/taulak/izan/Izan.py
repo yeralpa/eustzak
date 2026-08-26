@@ -3,8 +3,10 @@ from data.taulak.izan.nor import nor_taula
 from data.taulak.izan.nor_nori import nor_nori_taula
 from data.taulak.izan.nor_nork import nor_nork_taula
 from data.taulak.izan.nor_nori_nork import nor_nori_nork_taula
+from data.enums import Aditza
 
 class Izan(AditzaBase):
+    key = Aditza.IZAN
     def __init__(self) -> None:
         super().__init__()
         self.__nTaula = nor_taula

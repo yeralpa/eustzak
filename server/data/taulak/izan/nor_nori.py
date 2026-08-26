@@ -89,5 +89,15 @@ nor_nori_taula = {
             ["zenkizkidaten", "zenkizkioten", "zenkizkiguten", None, None, "zenkizkieten"],
             ["zekizkidan", "zekizkion", "zekizkigun", "zekizkizun", "zekizkizuen", "zekizkien"]
         )
+    },
+    Modua.AGINTERA: {
+        Denbora.ORAIN: __buildDF(
+            [None, None, None, None, None, None],
+            ["bekit", "bekio", "bekigu", "bekizu", "bekizue", "bekie"],
+            [None, None, None, None, None, None],
+            ["zakizkit", "zakizkio", "zakizkigu", None, None, "zakizkie"],
+            ["zakizkidate", "zakizkiote", "zakizkigute", None, None, "zakizkiete"],
+            ["bekizkit", "bekizkio", "bekizkigu", "bekizkizu", "bekizkizue", "bekizkie"]
+        )
     }
 }

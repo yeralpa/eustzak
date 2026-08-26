@@ -90,5 +90,15 @@ nor_nork_taula = {
             ["zintzatedan", "zintzaten", "zintzategun", None, None, "zintzateten"],
             ["nitzan", "zitzan", "genitzan", "zenitzan", "zenitzaten", "zitzaten"]
         )
+    },
+    Modua.AGINTERA: {
+        Denbora.ORAIN: __buildDF(
+            [None, "naza", None, "nazazu", "nazazue", "nazate"],
+            [None, "beza", None, "ezazu", "ezazue", "bezate"],
+            [None, "gaitza", None, "gaitzazu", "gaitzazue", "gaitzate"],
+            [None, "zaitza", None, None, None, "zaitzate"],
+            [None, "zaitzate", None, None, None, "zaitzatete"],
+            [None, "bitza", None, "itzazu", "itzazue", "bitzate"]
+        )
     }
 }

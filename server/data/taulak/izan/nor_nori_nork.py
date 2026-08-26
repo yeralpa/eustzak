@@ -189,5 +189,25 @@ nor_nori_nork_taula = {
                 ["niezazkien", "ziezazkien", "geniezazkien", "zeniezazkien", "zeniezazkieten", "ziezazkieten"]
             )
         }
+    },
+    Modua.AGINTERA: {
+        Denbora.ORAIN: {
+            Pertsona.HURA: __buildDF(
+                [None, "biezat", None, "iezadazu", "iezadazue", "biezadate"],
+                [None, "biezaio", None, "iezaiozu", "iezaiozue", "biezaiote"],
+                [None, "biezagu", None, "iezaguzu", "iezaguzue", "biezagute"],
+                [None, "biezazu", None, None, None, "biezazute"],
+                [None, "biezazue", None, None, None, "biezazuete"],
+                [None, "biezaie", None, "iezaiezu", "iezaiezue", "biezaiete"]
+            ),
+            Pertsona.HAIEK: __buildDF(
+                [None, "biezazkit", None, "iezazkidazu", "iezazkidazue", "biezazkidate"],
+                [None, "biezazkio", None, "iezazkiozu", "iezazkiozue", "biezazkiote"],
+                [None, "biezazkigu", None, "iezazkiguzu", "iezazkiguzue", "biezazkigute"],
+                [None, "biezazkizu", None, None, None, "biezazkizute"],
+                [None, "biezazkizue", None, None, None, "biezazkizuete"],
+                [None, "biezazkie", None, "iezazkiezu", "iezazkiezue", "biezazkiete"]
+            )
+        }
     }
 }

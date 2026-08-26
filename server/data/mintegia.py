@@ -1,19 +1,30 @@
-from data.taulak.izan.Izan import Izan
-from data.enums import *
-from data.exceptions import *
-import pandas as pd
+import importlib
+from pathlib import Path
+
+from data.AditzaBase import AditzaBase
+from data.enums import Aditza, Modua, Denbora, Pertsona
+from data.exceptions import ParseException, NotImplementedException, InvalidCombinationException, NotFoundException
 
 class AditzMintegia:
     def __init__(self) -> None:
-        self.data = {
-            Aditza.IZAN: Izan()
-        }
+        self.data: dict[Aditza, AditzaBase] = {}
+        taulak_dir = Path(__file__).parent / "taulak"
+        for folder in sorted(taulak_dir.iterdir()):
+            if not folder.is_dir() or folder.name.startswith("_"):
+                continue
+            try:
+                mod = importlib.import_module(f"data.taulak.{folder.name}.{folder.name.capitalize()}")
+            except ImportError:
+                continue
+            for obj in vars(mod).values():
+                if isinstance(obj, type) and issubclass(obj, AditzaBase) and obj is not AditzaBase and hasattr(obj, "key"):
+                    self.data[obj.key] = obj()
 
     def search(self, aditza: str, modua: str, denbora: str, nor: str, nori: str, nork: str) -> str:
         pAditza = Aditza.fromString(aditza)
         if pAditza == Aditza.ERR:
             raise ParseException("aditza", aditza, "Aditza ez da existitzen! Ondo idatzi al duzu?")
-        elif pAditza not in self.data.keys():
+        elif pAditza not in self.data:
             raise NotImplementedException("aditza", aditza)
 
         aditzaClass = self.data[pAditza]
@@ -46,7 +57,9 @@ class AditzMintegia:
         else:
             taulaType = aditzaClass.nor()
 
-        # 2. Navegar por Modua y Denbora
+        if taulaType is None:
+            raise NotFoundException("mota", "Mota hau ez dago ezarrita aditza honentzat")
+
         try:
             denboraClass = taulaType[pModua][pDenbora]
         except KeyError:
@@ -54,17 +67,17 @@ class AditzMintegia:
 
         try:
             if isNori and isNork:
-                out = denboraClass[pPertsonak[0]].at[pPertsonak[2], pPertsonak[1]]
+                out = denboraClass[pPertsonak[0]][pPertsonak[2]][pPertsonak[1]]
             elif isNori:
-                out = denboraClass.at[pPertsonak[0], pPertsonak[1]]
+                out = denboraClass[pPertsonak[0]][pPertsonak[1]]
             elif isNork:
-                out = denboraClass.at[pPertsonak[0], pPertsonak[2]]
+                out = denboraClass[pPertsonak[0]][pPertsonak[2]]
             else:
                 out = denboraClass[pPertsonak[0]]
-        except (KeyError, AttributeError, IndexError):
+        except KeyError:
             out = None
 
-        if out is None or pd.isna(out):
-            raise NotFoundException("aditza", f"Ez da aditza lortu! Datuak berrikusi eta, ondoren, egilearekin harremanean jarri.")
+        if out is None:
+            raise NotFoundException("aditza", f"Ez da aditza lortu! Datuak berrikusi eta, ondoren, egilearekin harremaneman jarri.")
 
         return out

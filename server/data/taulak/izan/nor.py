@@ -19,5 +19,8 @@ nor_taula = {
     Modua.SUBJUNTIBOA: {
         Denbora.ORAIN: __buildDF("nadin", "dadin", "gaitezen", "zaitezen", "zaitezten", "daitezen"),
         Denbora.LEHEN: __buildDF("nendin", "zedin", "gintezen", "zintezen", "zintezten", "zitezen")
+    },
+    Modua.AGINTERA: {
+        Denbora.ORAIN: __buildDF(None, "bedi", None, "zaitez", "zaitezten", "bitez")
     }
 }

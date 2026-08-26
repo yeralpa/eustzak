@@ -20,7 +20,7 @@ export const useFetchRandom = () => {
     return useQuery({
         queryKey: ["random"],
         queryFn: () => {
-            return axios.get<Random>(`${process.env.REACT_APP_API_URL}/fullRandom`)
+            return axios.get<Random>(`${process.env.REACT_APP_API_URL}/table/random`)
         },
         staleTime: Infinity, // Keep the data "fresh" so it doesn't auto-fetch
         refetchOnWindowFocus: false
