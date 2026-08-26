@@ -6,28 +6,28 @@ const Home = () => {
   const options = [
     {
         title: "Aditza Ariketa I",
-        desc: "Aditza-taula bete.",
+        desc: "Aditza eta personak jakinda, dagokien aditzak idatzi denbora eta modu bakoitzerako.",
         path: "/jolasa/taula",
         accent: "border-emerald-500",
         text: "text-emerald-600"
     },
     {
       title: "Aditza Ariketa II",
-      desc: "Klaseko ariketen antzekoa.",
+      desc: "Datu guztiak emanda, aditza egokia idatzi.",
       path: "/jolasa/errenkadak",
       accent: "border-indigo-500",
       text: "text-indigo-600"
     },
     {
       title: "Aditz Bilaketa",
-      desc: "Hautatu pertsonak eta ikusi aditza forma guztiak.",
+      desc: "Hautatu aditza eta pertsonak eta ikusi aditza forma guztiak.",
       path: "/jolasa/bilaketa",
       accent: "border-amber-500",
       text: "text-amber-600"
     },
     {
       title: "Aditz Bilaketa II",
-      desc: "Hautatu mota eta ikusi taula osoak modu guztiekin.",
+      desc: "Aditza aukeratuta, haren aditza-taula ikusi.",
       path: "/jolasa/bilaketa2",
       accent: "border-violet-500",
       text: "text-violet-600"
